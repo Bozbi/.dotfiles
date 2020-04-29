@@ -8,7 +8,7 @@
 # Script configuration (more info in the README)
 OSD="no"  # On Screen Display message for KDE if enabled
 INC=10  # Increment when lowering/rising the volume
-MAX_VOL=100  # Maximum volume
+MAX_VOL=153  # Maximum volume
 AUTOSYNC="no"  # All programs have the same volume if enabled
 VOLUME_ICONS=( " " " " " " )  # Volume icons array, from lower volume to higher
 MUTED_ICON=" "  # Muted volume icon
@@ -163,7 +163,7 @@ function nextSink() {
     # The final sinks list, removing the blacklisted ones from the list of
     # currently available sinks.
     if ! getCurSink; then
-        echo "PulseAudio not running"
+        echo "loading..."
         return 1
     fi
 
@@ -264,7 +264,7 @@ function listen() {
 
 function output() {
     if ! getCurSink; then
-        echo "PulseAudio not running"
+        echo "loading..."
         return 1
     fi
     getCurVol "$curSink"

@@ -1,0 +1,17 @@
+rofi.modi : window,run,ssh,drun
+
+
+!                  'background', 'border', 'separator'
+rofi.color-window: argb:e9222222, #77ffb52a, #77ffb52a
+rofi.color-normal: argb:031d1f21, #99f3f4f5, argb:031d1f21, argb:031d1f21, #99ffb52a 
+
+rofi.font: DejaVu Sans 17
+
+rofi.padding : 100
+!rofi.fullscreen : true
+rofi.separator-style : solid
+rofi.hide-scrollbar : true
+rofi.bw : 2
+rofi.width : 1000
+rofi.line-margin : 5
+rofi.lines : 15
