@@ -5,7 +5,8 @@ font pango:DejaVu Sans 9
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id compton -b --config ~/.config/compton/config 
 exec --no-startup-id feh --bg-scale ~/bobo/res/backgrounds/space.png
-exec imwheel -k
+exec --no-startup-id imwheel -k &
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier CTRL
@@ -16,8 +17,8 @@ focus_follows_mouse no
 # start a terminal
 bindsym $mod+T exec urxvt
 
-# start thunar
-bindsym $mod+N exec thunar ~/bobo
+# start ranger
+bindsym $mod+N exec urxvt -e ranger ~/bobo
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -155,6 +156,9 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 gaps inner 5
 smart_borders on
 smart_borders no_gaps
+
+for_window [title ="Android Emulator - "] floating enable
+
 for_window [class=".*"] border pixel 2
 
 

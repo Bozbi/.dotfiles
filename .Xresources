@@ -3,6 +3,9 @@ URxvt.background : #222222
 URxvt.foreground : gray
 URxvt.font: xft: DejaVu Sans Mono:size=13
 URxvt.boldFont : xft: DejaVu Sans Mono:size=13
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
 
 *color0:  #2E3436
 *color1:  #a40000
