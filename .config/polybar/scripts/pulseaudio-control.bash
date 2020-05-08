@@ -26,7 +26,7 @@ SINK_BLACKLIST=(
 # Maps PulseAudio sink names to human-readable names
 declare -A SINK_NICKNAMES
 SINK_NICKNAMES["alsa_output.usb-Corsair_Corsair_HS70_Wireless_Gaming_Headset-00.analog-stereo"]=" "
-SINK_NICKNAMES["alsa_output.pci-0000_38_00.6.analog-surround-21"]=" "
+SINK_NICKNAMES["alsa_output.pci-0000_38_00.6.analog-stereo"]=" "
 
 
 # Environment & global constants for the script

@@ -3,22 +3,26 @@ set $mod Mod4
 font pango:DejaVu Sans 9
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id compton -b --config ~/.config/compton/config 
-exec --no-startup-id feh --bg-scale ~/bobo/res/backgrounds/space.png
-exec --no-startup-id imwheel -k &
+exec --no-startup-id compton --config /home/bozbi/.config/compton/config 
+exec --no-startup-id feh --bg-scale ~/bozbi/res/backgrounds/pop/kate-hazen-mort1mer.png
+exec --no-startup-id imwheel -k -b "4 5" &
+exec --no-startup-id ~/.config/polybar/scripts/spotify/launchlistener.sh
+exec --no-startup-id spotify
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier CTRL
 
 # Mouse follow focus
-focus_follows_mouse no
+focus_follows_mouse yes
 
 # start a terminal
 bindsym $mod+T exec urxvt
 
 # start ranger
-bindsym $mod+N exec urxvt -e ranger ~/bobo
+bindsym $mod+N exec urxvt -e ranger /home/bozbi/bozbi
+bindsym $mod+Shift+N exec thunar /home/bozbi/bozbi
+
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -93,6 +97,19 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+workspace $ws1 output HDMI-A-0 
+workspace $ws3 output HDMI-A-0
+workspace $ws5 output HDMI-A-0
+workspace $ws7 output HDMI-A-0
+workspace $ws9 output HDMI-A-0
+
+workspace $ws2 output DVI-D-0
+workspace $ws4 output DVI-D-0
+workspace $ws6 output DVI-D-0
+workspace $ws8 output DVI-D-0
+workspace $ws10 output DVI-D-0
+
+
 # switch to workspace
 bindsym $mod+ampersand workspace number $ws1
 bindsym $mod+eacute workspace number $ws2
@@ -160,6 +177,8 @@ smart_borders no_gaps
 for_window [title ="Android Emulator - "] floating enable
 
 for_window [class=".*"] border pixel 2
+
+for_window [class="Spotify"] move workspace $ws10
 
 
 # class                 border  backgr. text    indicator child_border

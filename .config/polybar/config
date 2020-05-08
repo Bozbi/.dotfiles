@@ -30,6 +30,8 @@ monitor = HDMI-A-0
 width = 100%
 height = 27
 fixed-center = true
+enable-ipc = true
+
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -49,7 +51,7 @@ font-3 = DejaVu Sans:style=Bold Oblique:size=10;3
 
 modules-left = i3
 modules-center = xwindow 
-modules-right =  
+modules-right =  spotify previous playpause next
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -62,7 +64,7 @@ modules-right = pulseaudio-control date powermenu
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title%
 
 
 [module/i3]
@@ -153,5 +155,58 @@ click-middle = ~/.config/polybar/scripts/pulseaudio-control.bash next-sink
 scroll-up = ~/.config/polybar/scripts/pulseaudio-control.bash up
 scroll-down = ~/.config/polybar/scripts/pulseaudio-control.bash down
 label-foreground = ${colors.foreground}
+
+[module/previous]
+type = custom/script
+interval = 86400
+format = 
+format-padding = 2
+; Previous song icon
+exec = echo ""
+; Check if spotify is running before displaying the icon
+exec-if = "pgrep spotify"
+;format-underline = #1db954
+;line-size = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+
+[module/next]
+type = custom/script
+interval = 86400
+;format = "%{T3}<label>"
+format = 
+format-padding = 2
+; Next song icon
+exec = echo ""
+; Check if spotify is running before displaying the icon
+;exec-if = "pgrep spotify"
+;format-underline = #1db954
+;line-size = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+
+[module/playpause]
+type = custom/ipc
+; Default
+hook-0 = echo ""
+; Playing
+hook-1 = echo ""
+; Paused
+hook-2 = echo ""
+initial = 1
+;format-underline = #1db954
+;line-size = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+
+[module/spotify]
+type = custom/ipc
+hook-0 = echo ""
+hook-1 = python3 ~/.config/polybar/scripts/spotify/spotify_status.py
+initial = 1
+format-foreground = ${colors.primary}
+format-padding = 2
+;format-underline = #1db954
+line-size = 1
+; [i3wm only] - Uncomment the below line to focus on Spotify when clicking on the song name (credits to https://github.com/Esya)
+click-left = i3-msg '[class="Spotify"] focus'
+
 
 
